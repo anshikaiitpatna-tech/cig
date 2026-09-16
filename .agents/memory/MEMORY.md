@@ -1,0 +1,1 @@
+- [Browser hand-tracking runtime](media-pipe-browser-runtime.md) — MediaPipe is loaded from a browser CDN because the npm runtime path was unavailable here.

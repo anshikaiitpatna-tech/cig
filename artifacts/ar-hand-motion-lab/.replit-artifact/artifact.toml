@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AR Hand Motion Lab"
+description = "A playful browser-based AR simulator that uses local webcam hand tracking to anchor a stylized virtual cigarette to natural finger gestures, with motion physics, smoke effects, and an optional tracking debug view."
+version = "1.0.0"
+id = "artifacts/ar-hand-motion-lab"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24190
+
+[services.development]
+run = "pnpm --filter @workspace/ar-hand-motion-lab run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ar-hand-motion-lab", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ar-hand-motion-lab/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24190"
+BASE_PATH = "/"
